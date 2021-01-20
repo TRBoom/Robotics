@@ -30,6 +30,6 @@ Now that you have the sim open, you can start familiarizing yourself with it's i
 
 Now we'll do some robotics! We'll start with the simple Ackermann steering bot. You can find it in the `examples` folder of the `Model browser`. 
 
-![img/carBot.jpg]
+![carbot](img/carBot.jpg)
 
 Click and drag the carBot out into the simulation and click through the dialog window that pops up. Quite large isn't it? We will need to make it smaller. 

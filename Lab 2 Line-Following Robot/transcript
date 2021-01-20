@@ -1,0 +1,576 @@
+hello this video tutorial will show you
+how to implement a line following robot
+using v-ray
+the virtual robotic edge experimental
+platform this video tutorial is based on
+a previous recording of a seminar that
+showed you how to modify a simple
+acraman steering robot and add bump
+sensors to the previous seminar is not a
+prerequisite for this tutorial and the
+concepts that I will show you in this
+video can be applied to any robotic
+platform of your choosing we begin this
+tutorial by adding a path to the
+workspace for our robot to follow we
+right-click on the workspace and select
+add path and then segment type sorry
+it's in the way add path segment type
+you see now here the path has appeared
+as an object in the scene hierarchy we
+right click on it select edit edit modes
+enter path edit mode this is the past
+edit mode the scene hierarchy has
+disappeared and you now see a list of
+tasks points that are part of the path
+this is the path edit editor dialog the
+first thing we're going to do we're
+going to zoom out and you'll see that it
+this is the simulator just added some
+default points we will delete 0.2 and we
+will move point 1 to somewhere where
+it's less cluttered we select object
+item shift and then we can just drag the
+or the path point away
+so with PowerPoint one selected we
+right-click and then select insert new
+control point after selection it
+generates a path point right on top of
+the first path point we select object
+item position orientation control box
+and we will translate the path point
+down here in the corner you will see the
+orientation of the X and the y and the z
+and it shows you which direction is the
+positive of those coordinate axes we
+will translate the point two meters in
+the positive Y and then click translate
+selection and you will see that the
+system has connected the path points we
+can then drag and drop the points around
+and so I sort of create the path as we
+go along
+now when you're adding points to the
+path be sure to have the last path point
+selected otherwise it will say it will
+only give you the option to insert a new
+control point at the beginning of the
+path so but if you have the path the
+last path point selected you can insert
+the new control point after the
+selection which allows you to add points
+or delete points are in the center of
+your path you can also see that the
+system has interpolated some corners and
+I will show you who shortly how to edit
+the radius of those curves
+okay so now we build all our points and
+because we want this robot to go in
+circles we select path is closed and it
+will automatically connect the last
+point to the first point so the
+simulator has interpolated between the
+points and has created some round curves
+what we can do here we can select a
+couple of points and let's change the
+radius and the way to do that is to
+change the Bezier interpolation factor
+it gives it it takes a value between 0.1
+and 0.99 let's try 0.1 and then we click
+apply to selection and then we see that
+these corners are all of a sudden very
+sharp not many robots will be able to
+traverse them perfectly and it's really
+up to you to check with the competition
+guidelines what is the minimum radius
+that will be given to you so let's
+change it to 0.99 and you will see that
+these corners are now very large and
+easier to traverse for many other many
+types of robots since you're using a
+Ackermann steering car they are a little
+bit less agile when it comes to corners
+so we'll have to set the corners will
+actually set all of the corners quite
+large
+okay when you're done creating the files
+you select the X to close the path
+editor and one has asked you to do you
+wish to apply the changes you select yes
+now you have added the path to the
+workspace currently the path is a
+virtual object in your workspace and we
+need to make it a renderable object in
+the scene hierarchy now you have to
+double click on the path icon and it
+brings up the scene object properties we
+then select show Pat shaping dialog and
+select path shaping enabled right now it
+has generated a renderable object and
+will first adjust the color and in our
+case we're going to be using a black
+line that the robot has to follow we
+select adjust ambient component and put
+RGB to 0 close the dialogues now
+currently if you zoom in
+you will find that your path is a
+circular object and you can change that
+by clicking on the section
+characteristics and selecting a
+horizontal segment so now it's flat on
+the ground you can also select it as a
+square depending on your preference but
+currently as it is the robot will drive
+over these bumps and it will affect how
+the robot responds so we'll select a
+horizontal segment the only thing that
+is left to do is to select a scaling
+factor now this will depend on how thick
+of a line you want and you will have to
+experiment with this number to check
+that the line thickness is how it is
+relative to your car and once again this
+is a number that you have to confirm
+with the competition that you're
+designing this robot form so when you
+close all of these just a second
+actually before we close the scene
+object properties we will unselect show
+path line what this does it will remove
+this outline of the path line and hides
+it then we can close this and then now
+you have created a path for the robot to
+follow the next step will be to move the
+robot itself somewhere onto this path
+line and to implement the vision sensors
+to add a vision sensor to the
+environment we right-click select add
+vision sensor and then gives us two
+options orthographic type and
+perspective type to see the difference
+between the two we consult the manual
+and it shows us that the perspective
+type has a trapezoidal viewing area the
+perspective projection essentially has a
+single point which is the center of
+projection whereas the orthographic
+projection type has more of a large area
+that is the center of projection the
+orthographic type can be thought of as a
+spotlight we will assume that our light
+sensor is of the orthographic type but
+that really depends on your hardware so
+we select add vision sensor orthographic
+type so now it has selected a vision
+sensor somewhere in the environment and
+we'll have to go and find it actually
+what we will do instead we will select
+the car select position and then select
+apply to selection and then it brings
+the vision sensor from wherever it
+wasn't in environment to where the car
+is ok
+[Music]
+to see the output of the vision sensor
+we would like to add a floating view
+we'll select the scene we'll press
+escape to undo any selection right-click
+select add and then floating view this
+creates a sort of view that um that is a
+window and we will associate the vision
+sensor with that floating view we what
+the vision sensor selected we
+right-click on the floating view and
+select you associate view with selected
+vision sensor we now see and hear what
+the vision sensor sees when we run the
+simulation we can find that the vision
+sensor is actually looking straight up
+that's why our view is black so we will
+have to change the properties of the
+vision sensor and reoriented okay well
+the vision sensor selected we select the
+item object item position icon and then
+relative to its own frame let's move it
+around
+actually you should not have done that
+we just position this okay so along the
+world coordinate frame we will move it
+along the Y by 0.1 meters with us a
+couple of times and now we'll move it
+centimeter by centimeter and when we
+think that it's approximately correct we
+can also rotate it by clicking
+orientation / rotations and in the world
+coordinate we select gamma by 180
+because we wanted to point out and then
+click rotate selection this did not do
+what I thought that would do so we just
+click undo and we'll just rotate it
+around its own frame around X by 180 and
+you can see the red line which is its
+own X Direction so if we rotate it
+around at X it should point straight
+down okay so now we're still seeing
+black but this could partially be
+because it's currently looking at the
+line
+okay let's examine division sensor
+properties a little bit in here you can
+see this blue this blue outline and
+that's the near and the far clipping
+plane which tells you just how far what
+is the minimum distance and the maximum
+distance that division sensor sees I
+will illustrate that by changing this to
+zero point two and now you see that this
+changed this is kind of to give you a
+region of interest and we don't need
+this to be quite so far and we'll change
+the far clipping distance to zero point
+one also in here is the perspective
+angle and orthographic size we have the
+resolution in the X Y which is currently
+32 by 32 pixels we also have the object
+size X Y Z and so on what I'm going to
+do next I'm going to attach the sensor
+to the carb I will select the car right
+click and then edit make last select
+object parent so now the sensor is
+attached to the car and when we run this
+we find that the vision sensor is
+looking at something and it temporarily
+turns black when it arm crosses our path
+[Music]
+now since it's a we're using a light
+sensor why don't we change the vision
+sensor the vision sensor resolution does
+not have to be quite that big so we'll
+change it through a four by four which
+will make it really blocky but since
+we're using a vision sensor we could
+technically make it two by two or one by
+one but just to let's leave it as four
+by four for now all right let's move the
+car slightly so that the vision sensor
+and you could see briefly that the
+vision sensor was so part of the line
+okay
+we'll rename the vision sensor as mid
+low light sensor and since we like its
+current configuration and we don't want
+to have to go through all the hassle of
+redoing it we can actually select edit
+copy selected objects and then edit
+paste buffer it will paste
+the same type of object into the world
+coordinate space and call it vision
+sensor zero do not rename that let's
+rename it a middle light okay so I will
+rename this
+right right and then I have to also move
+it around and in this particular
+scenario we're using three light sensors
+relative to its own frame I will shift
+it along X by 0.1 which maybe it's a
+little bit much L ship my concern is
+that it might interfere with the bump
+sensor so I'll shift it back by minus
+minus zero point one zero one okay and
+again we have to attach it to the car
+edit makes a lab to the object parent
+and then we have to do this one more
+time
+copy selected object actually I would
+like to copy the middle then translate
+it and I believe it was around minus
+0.08 and now it should be symmetrical
+we'll call this one left and again we
+attach this sensor to the car it would
+be a little bit tedious to show all of
+the sensor outputs in floating views so
+let's add a graph to visualize the
+intensity of these light sensors we
+right click on the workspace and select
+add and then graph now a graph has been
+added to the workspace we would like to
+show the simulation as a split arm as a
+split screen so we select here this icon
+page selector and then we select just
+any page one is our current view or
+select page two we right click and then
+select remove page to create a blank
+page we right click and then say setup
+page with two views horizontal
+separation now this gives us two windows
+we select default camera right click on
+it and select view and an associate view
+with selected camera we then right-click
+the bottom half sorry you select grab 0
+which will be division sensor output
+we right-click the bottom pane and then
+select view associate view the selected
+graph now we have to select um now we
+have to edit the graph properties to
+show us exactly what we want displayed
+we right-click on the graph icon under
+add new data streams to record under the
+data stream type we scroll down to
+vision sensor and that gives us a large
+range of potential types and we will
+select vision sensor average intensity
+value and from the object we will it
+only allows us to you to select our
+three vision sensor we select the middle
+one we will rename this as middle and
+then we have to do the same thing for
+the other three sensors or for the other
+two sensors for the right one and it
+always pays to rename it otherwise it
+will be selected shown up as data so
+this was the right and currently they're
+both red so we'll adjust this one and
+make it green let's add the other one
+and again adjust the color and this one
+will be blue okay so let's zoom out of
+this you and then position the car and
+then we can run it and then see what
+happens
+okay so on this graph here you see the
+average intensity values of the vision
+sensors you can see blue which was the
+left one hit the line first and it went
+down to nearly zero followed by the red
+which is the middle one and then the
+right and then there was a nothing for a
+while and then again as it hits the line
+on the other side you will notice that
+there is a change in average values
+going from here to from the time before
+3.5 seconds and after about 3.5 seconds
+and that's because the tiles are
+differently colored and it shows you the
+average intensity value these values can
+be used within your programming to find
+out what exactly the car are the values
+of the intensity values that correspond
+to your line are for example if you had
+any different color your average
+intensity value would be different now
+that you have created a path and model
+the sensors and know what the sensors
+are reading and I verified that the
+readings are correct you can now begin
+and implement the sensors as part of
+your control strategy for the Ackermann
+steering car we double click on this
+icon right here which will bring up the
+script associated to the Ackermann
+steering car if you wonder what other
+types of script there are as part of
+your model you can look over here where
+it says scripts and it shows you all of
+the all of the main scripts and child
+script associated with all the objects
+most of them are have been added
+previously so we won't really do any
+changes there
+the first thing we need is to get an
+object handle into the script over here
+I have defined all of the object handles
+and down here I have a while loop so let
+me define this L equal to sim get object
+handle now while you're typing it brings
+up a whole bunch of suggestions and you
+can use the up and down arrow keys to
+select or to select or even just to look
+through all of the different functions
+that are available if you have selected
+a desired if you have found a function
+that you're looking for you just press
+ENTER and it will also complete it it
+needs a name of the function of the
+object that you're looking for and the
+name is just as it appears in the scene
+hierarchy right here since we're looking
+for the left vision sensor we're going
+to call it left underscore light now we
+have a way of finding the object within
+our loop so we go through this loop and
+this is the one we that we've previously
+designed in our in the bump sensor
+tutorial and we'll scroll all the way to
+the bottom and then we'll add another
+sort of behavior
+I've already done this before so I'll
+just type it out result comma data equal
+to sim read vision sensor and I'll use a
+vis R which is the right vision sensor
+[Music]
+the following function returns to a
+variable result and data in data it
+stores a whole bunch of information
+about the vision sensor and the result
+will show you as I believe just a
+boolean or a number 0 or 1 now this is
+where it gets a little bit complicated
+to find out what the sim read vision
+sensor returns we're going to have to
+check out the V rep manual which we can
+access by clicking on help help topics
+which brings up the manual this is a
+very good resource if you are ever
+curious it also has a couple of
+tutorials here in the at the end but
+what we are interested in is under
+scenes and models this does not seem to
+work on Internet Explorer on your switch
+under sorry under entities we scroll
+down to find vision sensors vision
+sensor properties second over here under
+related API function so we click vision
+sensor scroll all the way down related
+API function this shows you all of the
+function that you can call using the
+handle to identify and what we are
+interested in is sim read vision sensor
+now this manual is a little bit complex
+and how it chooses to represent the
+return functions so under auxilary
+values which is our data function it
+packages certain information and the way
+it packages it since we haven't added
+anything
+by default it packages it in the
+following it returns a an array of about
+15 entries by default let me read this
+here by default we are up returns one
+packet of 15 auxiliary values so the
+first five are the minimum of intensity
+the red the green blue and the depth
+value then the maximum of intensity red
+green blue or depth and then what we are
+interested is in is the average of
+intensity red green blue and depth so
+the average intensity is located at
+entry number 11 and if you remember in
+this graph we are graphing the average
+intensity
+so here we can say if that at 11 is less
+than don't forget the brackets it's less
+than and then we hear we have to consult
+the graph and I'll make a cut-off value
+above about 0.2 it's less than 0.2 then
+and what we'll say is desired a steering
+angle it's equal to and now we'll just
+pick a better than value at random right
+minus 10 times math dot pi divided by
+180 and here we are putting the desired
+steering angle into radians and so now
+our robot should drive along until the
+entry of the right sensor reaches zero
+point two and then it should turn either
+one way or the other and then let's test
+what happens okay so for some reason it
+started turning right away and this
+could have a couple of reasons
+there is a sudden spike here which
+brings the value down to zero at the
+beginning of the simulation this could
+this is most likely explained by the
+fact that the car drops down a little
+bit if you look closely here and clearly
+somehow it must the values get outside
+of the readable maximum and minimum so
+what we do here one way of fixing
+we could probably drop the car down to
+the level ground or what I have chosen
+to do is to check what the simulation
+time is a less is greater than 0.2
+seconds so that we don't get any effects
+of the beginning of the simulation so I
+put this actually into another if
+statement if SEM get simulation time arm
+is greater than 0.2 and again don't
+forget the brackets and proper indenting
+as well I'm not sure what the proper
+indenting is a mandatory but it's always
+good practice all right so let's check
+the behavior of this car now
+okay so now you could go through and do
+the same thing for the left and the
+middle sensor and figure out what sort
+of combination of threshold values and
+steering angles will get you the best
+result while you're going around a loop
+like that so now you have everything you
+need to model a line following robot in
+the V rep environment you know how to
+draw a line in the environment you know
+how to add sensors to your vehicle you
+know how to read the sensor inputs and
+visualize them in a camera window and
+you can also read those sensor inputs
+and put them as part of your steering
+script but I'm not quite happy with the
+results just yet currently as you can
+see as you drive over the line you can
+tell the location where to locate where
+the line is in three locations you can
+tell if it's either left middle or right
+and that's because we chose to model our
+sensors as orthographic sensors I'm not
+entirely happy with that and we can
+actually change it by checking
+perspective mode and now you can see you
+have a much wider view and as far as the
+pixel goes why don't we give it an 8 by
+8 and we'll do the same for the right
+and the left sensors
+eight
+let me also to temporarily turn off this
+the steering angle this is the average
+intensity values before we changed the
+sensors and you can see that this is
+quite steep now when we drive over the
+line you see that there is actually now
+some overlap in between the sensors this
+is very good because now we can or you
+can try to estimate the location of the
+line based on what the reading is and
+whether there is a compliant reading you
+can also play around with moving them
+closer together what this will do it
+will allow you to get the line rather
+than from a discrete state of being
+either middle left or right to more
+along where you can say is either market
+here here or anywhere within this area
+this should allow you to get a lot
+better control and should help you
+design your robot better I can't really
+tell you exactly how to do that but you
+could try setting up experiments where
+you move the line relative to your
+vision sensors and see just how much
+overlap you get and this concludes the
+line follower video thank you for
+watching and if you have any questions
+please leave them in the comments below
+thank you
+and now just as a bonus let me show you
+what an implemented line following robot
+looks like now you can see that to
+successfully traverse the line it's a
+combination of the robot speed and a
+robot steering angle you can of course
+also make it a little bit more fancy by
+allowing it to either accelerate or slow
+down in certain areas and as you can see
+currently my steering angle is not big
+enough for the speed at which the robot
+is going
+however it seems to be doing all right
+well I wish you good luck with your
+robot building and your robot design
+thank you for watching

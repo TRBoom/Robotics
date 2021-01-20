@@ -7,17 +7,17 @@ Now we'll do some robotics! You'll first need to add in a path. You can do this 
 
 On the far left side click the `edit path` button as seen bellow
 
-![img/editPath.jpg]
+![editPath](img/editPath.jpg)
 
 This will open up the path editor, it's a list of all the points in the path, just two for now. Select `Path point 1`, right click it, and select `Insert new control point after selection`. Now we have three points! To move any particular point, select it, choose the move object mode as seen below, then click and drag in the simulation. 
 
 Make yourself a little path.
 
-![img/pathMade.jpg]
+![pathMade](img/pathMade.jpg)
 
 In the `Path edition` window check mark the box `Path is closed`. This will turn your path into a loop. Now select all the points you've made and return to the `Path edition` window and change the `Bezier interpolation factor` 1 and 2 to `.99` and then hit `Apply to selection`. Take note of the changes. The corners should be more curvy. 
 
 Close the `Path edition` window, chosing to save it in the dialog box that pops up. 
 
-![img/moveObject.jpg]
+![moveObject](img/moveObject.jpg)
 
