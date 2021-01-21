@@ -66,7 +66,7 @@ Next we will add a vision sensor, at the same position and orientation as Bubble
 
 We attach a non-threaded child script to the vision sensor by clicking [Menu bar --> Add --> Associated child script --> Non threaded]. We double-click the little icon that appeared next to the vision sensor in the scene hierarchy: this opens the child script that we just added. We copy and paste following code into the script editor, then close it:
 
-`
+```
 function sysCall_vision(inData)
     simVision.sensorImgToWorkImg(inData.handle) -- copy the vision sensor image to the work image
     simVision.edgeDetectionOnWorkImg(inData.handle,0.2) -- perform edge detection on the work image
@@ -75,12 +75,12 @@ end
 
 function sysCall_init()
 end
-`
+```
 
 To be able to see the vision sensor's image, we start the simulation, then stop it again.
 The last thing that we need for our scene is a small child script that will control BubbleRob's behavior. We select bubbleRob and click [Menu bar --> Add --> Associated child script --> Non threaded]. We double-click the script icon that appeared next to bubbleRob's name in the scene hierarchy and copy and paste following code into the script editor, then close it:
 
-`
+```
 function speedChange_callback(ui,id,newVal)
     speed=minMaxSpeed[1]+(minMaxSpeed[2]-minMaxSpeed[1])*newVal/100
 end
@@ -123,7 +123,7 @@ end
 function sysCall_cleanup()
 	simUI.destroy(ui)
 end
-`
+```
 
 We run the simulation. BubbleRob now moves forward while trying to avoid obstacles (in a very basic fashion). While the simulation is still running, change BubbleRob's velocity, and copy/paste it a few times. Also try to scale a few of them while the simulation is still running. Be aware that the minimum distance calculation functionality might be heavily slowing down the simulation, depending on the environment. You can turn that functionality on and off in the distance dialog, by checking / unchecking the Enable all distance calculations item.
 
