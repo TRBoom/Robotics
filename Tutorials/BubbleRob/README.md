@@ -2,6 +2,7 @@
 [Source](https://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm)
 
 This tutorial will try to introduce quite many CoppeliaSim functionalities while designing the simple mobile robot BubbleRob. The CoppeliaSim scene file related to this tutorial is located in CoppeliaSim's installation folder's tutorials/BubbleRob folder. Following figure illustrates the simulation scene that we will design:
+
 ![bubbleRob](img/bubbleRobTut1.jpg)
 
 
