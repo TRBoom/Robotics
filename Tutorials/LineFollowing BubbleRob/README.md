@@ -29,7 +29,8 @@ With the path selected, enter the path edit mode. In there, you have much more f
 Once you are satisfied with the geometry of the path (you can always modify it at a later stage), select it, and uncheck Show orientation of points, Show path line and Show current position on path in the path properties. Then click Show path shaping dialog. This opens the path shaping dialog. Click Path shaping enabled, set the type to horizontal segment, and Scaling factor to 4.0. Finally adjust the color to black. There is a last important adjustment we have to make to the path: currently, the z-position of the path coincides with the z-position of the floor. The consequence is that sometimes we see the path, sometimes the floor (this effect is known as z-fighting in the openGl jargon). This not only affects what we see, but also what the vision sensors see. In order to avoid problems linked to z-fighting, just move the position of the path object up by 0.5 mm.
 The last step is to adjust the controller of BubbleRob, so that it will also follow the black path. Open the child script attached to bubbleRob, and replace it with following code:
 
-```function speedChange_callback(ui,id,newVal)
+```
+function speedChange_callback(ui,id,newVal)
     speed=minMaxSpeed[1]+(minMaxSpeed[2]-minMaxSpeed[1])*newVal/100
 end
 
@@ -96,7 +97,8 @@ end
 
 function sysCall_cleanup()
 	simUI.destroy(ui)
-end```
+end
+```
 You can easily debug your line following vision sensors: select one, then in the scene view select [Right-click --> Add --> Floating view], then in the newly added floating view select [Right click --> View --> Associate view with selected vision sensor].
 
 Finally, remove the auxiliary items that were added in the first BubbleRob tutorial: remove the image processing vision sensor, its associated floating view, the floating view representing the obstacle clearance. Remove also the distance calculation object via the distance dialog. That's it!
