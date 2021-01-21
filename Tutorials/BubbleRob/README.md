@@ -1,5 +1,6 @@
 # BubbleRob Tutorial
 [Source](https://www.coppeliarobotics.com/helpFiles/en/bubbleRobTutorial.htm)
+
 This tutorial will try to introduce quite many CoppeliaSim functionalities while designing the simple mobile robot BubbleRob. The CoppeliaSim scene file related to this tutorial is located in CoppeliaSim's installation folder's tutorials/BubbleRob folder. Following figure illustrates the simulation scene that we will design:
 ![bubbleRob](img/bubbleRobTut1.jpg)
 
@@ -65,11 +66,11 @@ Next we will add a vision sensor, at the same position and orientation as Bubble
 
 We attach a non-threaded child script to the vision sensor by clicking [Menu bar --> Add --> Associated child script --> Non threaded]. We double-click the little icon that appeared next to the vision sensor in the scene hierarchy: this opens the child script that we just added. We copy and paste following code into the script editor, then close it:
 
-`function sysCall_vision(inData)`
-`    simVision.sensorImgToWorkImg(inData.handle) -- copy the vision sensor image to the work image`
-`    simVision.edgeDetectionOnWorkImg(inData.handle,0.2) -- perform edge detection on the work image`
-`    simVision.workImgToSensorImg(inData.handle) -- copy the work image to the vision sensor image buffer`
-`end`
+`function sysCall_vision(inData)
+    simVision.sensorImgToWorkImg(inData.handle) -- copy the vision sensor image to the work image
+    simVision.edgeDetectionOnWorkImg(inData.handle,0.2) -- perform edge detection on the work image
+    simVision.workImgToSensorImg(inData.handle) -- copy the work image to the vision sensor image buffer
+end`
 
 `function sysCall_init()`
 `end`
